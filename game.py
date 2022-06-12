@@ -1,24 +1,40 @@
 import random
+import emoji
 
 
-print('1 = Pedra')
-print('2 = papel')
-print('3 = tsoura')
+print(emoji.emojize('Pedra :black_circle:'))
+print(emoji.emojize('Papel :roll_of_paper:'))
+print(emoji.emojize('Tesoura :scissors:'))
+print(emoji.emojize('Sair :END_arrow:'))
 
-c = 0
-while c < 3:
-    escolha = int(input('Qual opção vc quer: '))
-    pedra = 1
-    papel = 2
-    tesoura = 3
-    robo = random.randint(1,4)
+while True:
+    escolha = str(input('\nQual opção vc quer: '))
 
-    print(f'robô {robo}')
+    opcao = ['Pedra', 'Papel', 'Tesoura']
+    robo = random.choice(opcao)
+
+    if escolha == 'Sair':
+        break
+
+    if robo == 'Pedra':
+        print(emoji.emojize('ROBÔ: Pedra :black_circle:'))
+    elif robo == 'Papel':
+        print(emoji.emojize('ROBÔ: Papel :roll_of_paper:'))    
+    elif robo == 'Tesoura':
+        print(emoji.emojize('ROBÔ: Tesoura :scissors:'))
 
     if escolha == robo:
-        print('empate')
-    elif escolha == 1 and robo == 2:
-        print('perdeu')
-    elif escolha == 1 and robo == 3:
-        print('ganhou')
-    c += 1
+        print('\033[1mEMPATE\033[m')
+    elif escolha == 'Pedra' and robo == 'Papel':
+        print('\033[1;31mPERDEU\033[m')
+    elif escolha == 'Papel' and robo == 'Tesoura':
+        print('\033[1;31mPERDEU\033[m')
+    elif escolha == 'Tesoura' and robo == 'Pedra':
+        print('\033[1;31mPERDEU\033[m')
+    elif escolha == 'Pedra' and robo == 'Tesoura':
+        print('\033[1;32mGANHOU\033[m')
+    elif escolha == 'Papel' and robo == 'Pedra':
+        print('\033[1;32mGANHOU\033[m')
+    elif escolha == 'Tesoura' and robo == 'Papel':
+        print('\033[1;32mGANHOU\033[m')
+  
